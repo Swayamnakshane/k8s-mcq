@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: back-cont
-        image: swayamnakshane/backendendmcq
+        image: swayamnakshane/bf1824:latest
         ports:
         - containerPort: 5000
         env:
