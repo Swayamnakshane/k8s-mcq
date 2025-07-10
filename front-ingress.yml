@@ -1,12 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: examportal-ingress
+  name: frontend-ingress
   namespace: exam
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
     cert-manager.io/cluster-issuer: selfsigned-issuer
 spec:
   ingressClassName: nginx
@@ -18,13 +16,6 @@ spec:
     - host: "34.219.21.193.nip.io"
       http:
         paths:
-          - path: /back(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-svc
-                port:
-                  number: 5000
           - path: /
             pathType: Prefix
             backend:
